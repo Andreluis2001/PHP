@@ -1,0 +1,11 @@
+<!-- Placeholder SVG para livros sem capa -->
+<svg width="200" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="300" fill="#f8f9fa"/>
+  <text x="100" y="140" text-anchor="middle" font-family="Arial" font-size="16" fill="#6c757d">
+    <tspan x="100" dy="0">Sem</tspan>
+    <tspan x="100" dy="20">Imagem</tspan>
+    <tspan x="100" dy="20">de Capa</tspan>
+  </text>
+  <path d="M70 180 L130 180 L130 200 L70 200 Z" fill="#dee2e6"/>
+  <circle cx="100" cy="190" r="8" fill="#6c757d"/>
+</svg>
