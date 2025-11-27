@@ -20,8 +20,6 @@ return new class extends Migration
             $table->integer('estoque');
             $table->string('isbn', 20)->unique()->nullable();
             $table->string('imagem_capa', 255)->nullable();
-            $table->unsignedBigInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->timestamps();
         });
     }

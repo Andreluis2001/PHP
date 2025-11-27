@@ -17,21 +17,10 @@
     <div class="card-body">
         <form method="GET" action="{{ route('livros.index') }}">
             <div class="row g-3 align-items-end">
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <label for="search" class="form-label">Buscar</label>
                     <input type="text" class="form-control" id="search" name="search" 
                            value="{{ request('search') }}" placeholder="Título, autor ou ISBN...">
-                </div>
-                <div class="col-md-4">
-                    <label for="categoria_id" class="form-label">Categoria</label>
-                    <select class="form-select" id="categoria_id" name="categoria_id">
-                        <option value="">Todas as categorias</option>
-                        @foreach($categorias as $categoria)
-                            <option value="{{ $categoria->id }}" {{ request('categoria_id') == $categoria->id ? 'selected' : '' }}>
-                                {{ $categoria->nome }}
-                            </option>
-                        @endforeach
-                    </select>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex gap-2">
@@ -61,7 +50,6 @@
                     </div>
                 @endif
                 <div class="card-body d-flex flex-column">
-                    <span class="badge bg-secondary mb-2 align-self-start">{{ $livro->categoria->nome }}</span>
                     <h6 class="card-title">{{ Str::limit($livro->titulo, 40) }}</h6>
                     <p class="card-text text-muted small">por {{ $livro->autor }}</p>
                     <p class="card-text">{{ Str::limit($livro->descricao, 80) }}</p>
@@ -101,20 +89,20 @@
     <div class="text-center py-5">
         <i class="bi bi-book fs-1 text-muted"></i>
         <h3 class="text-muted mt-3">
-            @if(request('search') || request('categoria_id'))
+            @if(request('search'))
                 Nenhum livro encontrado
             @else
                 Nenhum livro cadastrado
             @endif
         </h3>
         <p class="text-muted">
-            @if(request('search') || request('categoria_id'))
+            @if(request('search'))
                 Tente ajustar os filtros de busca.
             @else
                 Comece adicionando seu primeiro livro.
             @endif
         </p>
-        @if(!request('search') && !request('categoria_id'))
+        @if(!request('search'))
             <a href="{{ route('livros.create') }}" class="btn btn-success btn-lg">
                 <i class="bi bi-plus-circle"></i> Adicionar Primeiro Livro
             </a>

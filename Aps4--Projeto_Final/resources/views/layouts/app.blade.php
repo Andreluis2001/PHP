@@ -37,7 +37,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('dashboard') }}">
+            <a class="navbar-brand" href="{{ route('livros.index') }}">
                 <i class="bi bi-book"></i> Livraria Online
             </a>
             
@@ -49,18 +49,8 @@
                 @auth
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dashboard') }}">
-                            <i class="bi bi-speedometer2"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('livros.index') }}">
                             <i class="bi bi-book"></i> Livros
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('categorias.index') }}">
-                            <i class="bi bi-tags"></i> Categorias
                         </a>
                     </li>
                 </ul>
@@ -109,21 +99,9 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" 
-                               href="{{ route('dashboard') }}">
-                                <i class="bi bi-speedometer2"></i> Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('livros.*') ? 'active' : '' }}" 
                                href="{{ route('livros.index') }}">
                                 <i class="bi bi-book"></i> Gerenciar Livros
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('categorias.*') ? 'active' : '' }}" 
-                               href="{{ route('categorias.index') }}">
-                                <i class="bi bi-tags"></i> Gerenciar Categorias
                             </a>
                         </li>
                     </ul>

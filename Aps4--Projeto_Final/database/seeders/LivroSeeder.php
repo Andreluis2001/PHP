@@ -3,18 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Livro;
-use App\Models\Categoria;
 use Illuminate\Database\Seeder;
 
 class LivroSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
-    {
-        $categorias = Categoria::all();
-        
+    {        
         $livros = [
             [
                 'titulo' => 'Dom Casmurro',
@@ -23,7 +17,6 @@ class LivroSeeder extends Seeder
                 'preco' => 25.90,
                 'estoque' => 15,
                 'isbn' => '978-85-254-0123-4',
-                'categoria_nome' => 'Ficção',
             ],
             [
                 'titulo' => 'O Cortiço',
@@ -32,7 +25,6 @@ class LivroSeeder extends Seeder
                 'preco' => 22.50,
                 'estoque' => 10,
                 'isbn' => '978-85-254-0456-7',
-                'categoria_nome' => 'Ficção',
             ],
             [
                 'titulo' => 'Algoritmos e Estruturas de Dados',
@@ -41,7 +33,6 @@ class LivroSeeder extends Seeder
                 'preco' => 189.90,
                 'estoque' => 5,
                 'isbn' => '978-85-352-7233-8',
-                'categoria_nome' => 'Técnico',
             ],
             [
                 'titulo' => 'Como Fazer Amigos e Influenciar Pessoas',
@@ -50,7 +41,6 @@ class LivroSeeder extends Seeder
                 'preco' => 34.90,
                 'estoque' => 20,
                 'isbn' => '978-85-7542-189-3',
-                'categoria_nome' => 'Auto-ajuda',
             ],
             [
                 'titulo' => 'Uma Breve História do Tempo',
@@ -59,7 +49,6 @@ class LivroSeeder extends Seeder
                 'preco' => 42.90,
                 'estoque' => 8,
                 'isbn' => '978-85-8057-172-4',
-                'categoria_nome' => 'Ciência',
             ],
             [
                 'titulo' => 'O Senhor dos Anéis: A Sociedade do Anel',
@@ -68,7 +57,6 @@ class LivroSeeder extends Seeder
                 'preco' => 39.90,
                 'estoque' => 12,
                 'isbn' => '978-85-7542-923-3',
-                'categoria_nome' => 'Fantasia',
             ],
             [
                 'titulo' => 'História do Brasil',
@@ -77,7 +65,6 @@ class LivroSeeder extends Seeder
                 'preco' => 55.00,
                 'estoque' => 7,
                 'isbn' => '978-85-314-1068-2',
-                'categoria_nome' => 'História',
             ],
             [
                 'titulo' => 'O Assassinato no Expresso Oriente',
@@ -86,7 +73,6 @@ class LivroSeeder extends Seeder
                 'preco' => 28.90,
                 'estoque' => 18,
                 'isbn' => '978-85-7542-445-0',
-                'categoria_nome' => 'Mistério',
             ],
             [
                 'titulo' => '1822: Como um homem sábio, uma princesa triste e um escocês louco por dinheiro ajudaram Dom Pedro a criar o Brasil',
@@ -95,7 +81,6 @@ class LivroSeeder extends Seeder
                 'preco' => 48.90,
                 'estoque' => 6,
                 'isbn' => '978-85-7542-890-8',
-                'categoria_nome' => 'História',
             ],
             [
                 'titulo' => 'Sapiens: Uma Breve História da Humanidade',
@@ -104,24 +89,11 @@ class LivroSeeder extends Seeder
                 'preco' => 54.90,
                 'estoque' => 14,
                 'isbn' => '978-85-7542-933-2',
-                'categoria_nome' => 'Não-ficção',
             ],
         ];
 
         foreach ($livros as $livroData) {
-            $categoria = $categorias->where('nome', $livroData['categoria_nome'])->first();
-            
-            if ($categoria) {
-                Livro::create([
-                    'titulo' => $livroData['titulo'],
-                    'autor' => $livroData['autor'],
-                    'descricao' => $livroData['descricao'],
-                    'preco' => $livroData['preco'],
-                    'estoque' => $livroData['estoque'],
-                    'isbn' => $livroData['isbn'],
-                    'categoria_id' => $categoria->id,
-                ]);
-            }
+            Livro::create($livroData);
         }
     }
 }

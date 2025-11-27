@@ -21,34 +21,13 @@
                     <h5 class="mb-0">Informações do Livro</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="mb-3">
-                                <label for="titulo" class="form-label">Título *</label>
-                                <input type="text" class="form-control @error('titulo') is-invalid @enderror" 
-                                       id="titulo" name="titulo" value="{{ old('titulo') }}" required>
-                                @error('titulo')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="categoria_id" class="form-label">Categoria *</label>
-                                <select class="form-select @error('categoria_id') is-invalid @enderror" 
-                                        id="categoria_id" name="categoria_id" required>
-                                    <option value="">Selecione...</option>
-                                    @foreach($categorias as $categoria)
-                                        <option value="{{ $categoria->id }}" {{ old('categoria_id', request('categoria_id')) == $categoria->id ? 'selected' : '' }}>
-                                            {{ $categoria->nome }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('categoria_id')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título *</label>
+                        <input type="text" class="form-control @error('titulo') is-invalid @enderror" 
+                               id="titulo" name="titulo" value="{{ old('titulo') }}" required>
+                        @error('titulo')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
@@ -135,10 +114,6 @@
                         <li class="mb-2">
                             <i class="bi bi-check text-success"></i>
                             Use títulos descritivos
-                        </li>
-                        <li class="mb-2">
-                            <i class="bi bi-check text-success"></i>
-                            Categorize corretamente
                         </li>
                         <li class="mb-2">
                             <i class="bi bi-check text-success"></i>
